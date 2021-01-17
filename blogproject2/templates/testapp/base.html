@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+{%load staticfiles%}
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7 /css/bootstrap.min.css" integrity="sha384BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"  crossorigin="anonymous">
+     <link rel="stylesheet" href="{%static "css/blog.css"%}">
+    <title>{%block title %}{%endblock%}</title>
+    <style>
+    .content{
+      float:left;
+      width:60%;
+      padding:0 0 0 30px;
+    }
+    .sidebar {
+      float:right;
+      width:30%;
+      padding:10px;
+      background:green;
+      height:100%;
+    }
+    h1{
+      text-align:center;
+      border-bottom:1px solid #bbb;
+      padding:0 0 10px 0;
+    }
+    #date{
+      color:yellow;
+      font-size:12px;
+      font-weight:italic;
+    }
+    body{
+      background: black;
+      color:white;
+    }
+    #ch{
+      color: yellow;
+      font-size:15px;
+      font-style: italic;
+      border-bottom: 2px solid yellow;
+    }
+    #pcount{
+      font-size: 40px;
+      font-weight:bold;
+      color: yellow;
+    }
+    </style>
+  </head>
+  <body>
+    <div class="content">
+      {%block content%}{%endblock%}
+    </div>
+    <div class="sidebar">
+      <h2>ABHAY DESAI</h2>
+       <ul>
+        {% for post in most_commented_posts%}
+        <li><a href="{{post.get_absolute_url}}" id='la'>{{post.title}}</a></li>
+        {% endfor %}
+       </ul>
+    </div>
+  </body>
+</html>

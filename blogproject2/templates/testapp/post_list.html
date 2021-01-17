@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+{%extends 'testapp/base.html'%}
+{%load staticfiles%}
+  {%block title %}ABHAY DESAI{%endblock%}
+  {%block content%}
+  <h1>ABHAY DESAI</h1>
+  {%if tag%}
+  <h2>Posts tagged with "{{tag.name}}"</h2>
+  {%endif%}
+    {%for post in post_list %}
+     <h2><a href="{{post.get_absolute_url}}">{{post.title}}</a></h2>
+    <p id='date'>Published on {{post.publish}} by {{post.author|title}}</p>
+    {{post.body|truncatewords:30|linebreaks}}
+{%endfor%}
+{%include 'testapp/pagination.html' with page=post_list %}
+{%endblock%}
